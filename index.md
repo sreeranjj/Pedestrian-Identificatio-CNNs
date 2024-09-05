@@ -101,7 +101,7 @@ Till now, our best solution to this problem has been to use a pretrained ResNet-
 This is what the network looks like, from the resnet paper
 
 <p align="center">
-  <img src="https://github.gatech.edu/sjayadevan3/CV_Project_34/blob/main/resnetarch.png?raw=true" alt="Adam Resnet Paper">
+  <img src="https://github.com/sreeranjj/Pedestrian-Identificatio-CNNs/blob/main/resnetarch.png?raw=true" alt="Adam Resnet Paper">
 </p>
 
 This has given us **89%** recall and **84.5%** F1-score. We emphasize the importance of recall in this scenario as we prefer false positives over false negatives, as it is imperative that we detect any vulnerable living beings in the path of the car.
@@ -119,7 +119,7 @@ ImageNet-pretrained models tend to have good image feature generation ability an
 <h2 style="color: green;">Method Visualisation</h2>
 Source: pyimagesearch.com
 <p align="center">
-  <img src="https://github.gatech.edu/sjayadevan3/CV_Project_34/blob/main/resnet_arch.png?raw=true" alt="Adam Resnet Paper" width="300">
+  <img src="https://github.com/sreeranjj/Pedestrian-Identificatio-CNNs/blob/main/resnet_arch.png?raw=true" alt="Adam Resnet Paper" width="300">
 </p>
 
 <a name="experiments"></a>
@@ -159,7 +159,7 @@ Each image has annotations for 25 classes – animal, human.pedestrian (subclass
 An example image is the following. The dataset annotations for this are ['vehicle.car', 'vehicle.car', 'vehicle.car', 'human.pedestrian.adult', 'vehicle.truck', 'vehicle.truck', 'human.pedestrian.adult'] (the second human is near the blue sign on the right!). For our first experiment, multi-label classification, we took the annotation as [‘vehicle.car’, ‘vehicle.truck’, ‘human.pedestrian.adult’], taking each class exactly once. For later experiments, single-label binary classification, the label for this would simply be ‘vulnerable’ since there’s a human.pedestrian.adult in this image. Computationally, the former would be represented as a multihot vector (vector of num_classes 0/1s) and the latter would be represented as 0/1. 
 
 <p align="center">
-  <img src="https://github.gatech.edu/sjayadevan3/CV_Project_34/blob/main/example.png?raw=true" alt="Adam Resnet Paper">
+  <img src="https://github.com/sreeranjj/Pedestrian-Identificatio-CNNs/blob/main/example.png?raw=true" alt="Adam Resnet Paper">
 </p>
 
 <a name="Metrics"></a>
@@ -174,34 +174,34 @@ convolutional neural network for partial occlusion handling" did a comparative s
 
 
 <p align="center">
-  <img src="https://github.gatech.edu/sjayadevan3/CV_Project_34/blob/main/Adam_Resnet_Paper.png?raw=true" alt="Adam Resnet Paper">
+  <img src="https://github.com/sreeranjj/Pedestrian-Identificatio-CNNs/blob/main/Adam_Resnet_Paper.png?raw=true" alt="Adam Resnet Paper">
 </p>
 
 
-![Octocat](https://github.gatech.edu/sjayadevan3/CV_Project_34/blob/main/accuracy.png?raw=true)
+![Octocat](https://github.com/sreeranjj/Pedestrian-Identificatio-CNNs/blob/main/accuracy.png?raw=true)
 
 
 This however cannot be a direct comparison of results as we are using 10k images for our training. But the transfer learning paper helped us understand the different hyperparameters we can tune to get good results. 
 
 The primary metric we used to quantitatively gauge our studies was the **recall** . This is because when it comes to safety we need as low of false negatives as possible. 
 
-![Octocat](https://github.gatech.edu/sjayadevan3/CV_Project_34/blob/main/metrics.png?raw=true)
+![Octocat](https://github.com/sreeranjj/Pedestrian-Identificatio-CNNs/blob/main/metrics.png?raw=true)
 
 The best results from these experiments for multilabel classification is summarised below.
 
 <p align="center">
-  <img src="https://github.gatech.edu/sjayadevan3/CV_Project_34/blob/main/multilabel_table.png?raw=true" alt="Multilabel">
+  <img src="https://github.com/sreeranjj/Pedestrian-Identificatio-CNNs/blob/main/multilabel_table.png?raw=true" alt="Multilabel">
 </p>
 
 Since we were not getting good results with 224 x 224 image size (we noticed that in some of our inferences, the model failed to identify pedestrains in the scene. Especially if only a small portion of the pedestrian is present in the image). So we decided to train the model with higher resolution and chose to downsample the images to 448 by 448 pixels. Additionally since the main motive for the project is to classify vulnerable and non vulnerable obstacles, we decided to do a binary classification. We changed the categories to vulnerable(pedestrian present) and non vulnerable (no pedestrians). We compared the results between 448 x 448 and 224 x 224 pixels **image resolution**. Additionally, we changed the multi label classification to a binary classification with just two categories (vulnerable and non vulnerable).
 
 <p align="center">
-  <img src="https://github.gatech.edu/sjayadevan3/CV_Project_34/blob/main/resolutionmetrics.png?raw=true" alt="Multilabel">
+  <img src="https://github.com/sreeranjj/Pedestrian-Identificatio-CNNs/blob/main/resolutionmetrics.png?raw=true" alt="Multilabel">
 </p>
 The last set of experiments we performed were using **learning rate scheduler**. Although this did not considerably improve the results, we got better results than than the multi label classification. Our final result was **89** recall which we consider effective within the scope of this project. Further work would be needed to make it to improve the multi label case and improve the metrics to a suitable level for deployment in real world scenarios.
 
 <p align="center">
-  <img src="https://github.gatech.edu/sjayadevan3/CV_Project_34/blob/main/lrscheduler.png?raw=true" alt="Multilabel">
+  <img src="https://github.com/sreeranjj/Pedestrian-Identificatio-CNNs/blob/main/lrscheduler.png?raw=true" alt="Multilabel">
 </p>
 
 <a name="Discussions"></a>
@@ -227,14 +227,14 @@ The dataset is divided using a 80-20 split, 80% of the data is used for training
 
 Training and validation were plotted over 5 epochs. It kept on decreasing for first 3 epochs but increased slightly afterwards. This can be attributed to the fact that we only ran for 5 epochs. For the final project update, we plan to run this for more number of epochs to remove this uncertainty. The accuracy is reasonably good eventhough there is a lot of fluctuation. This can be attributed to the small data set and low number of epochs. 
 
-![Octocat](https://github.gatech.edu/sjayadevan3/CV_Project_34/blob/main/Training_ValidationLoss.png?raw=true)
+![Octocat](https://github.com/sreeranjj/Pedestrian-Identificatio-CNNs/blob/main/Training_ValidationLoss.png?raw=true)
 
-![Octocat](https://github.gatech.edu/sjayadevan3/CV_Project_34/blob/main/Validation.png?raw=true)
+![Octocat](https://github.com/sreeranjj/Pedestrian-Identificatio-CNNs/blob/main/Validation.png?raw=true)
 
 ## Next Steps
 As we move forward, our plan until the final project due date involves steps aimed at refining our approach, expanding our dataset, and evaluating our model's performance.
 
-![Octocat](https://github.gatech.edu/sjayadevan3/CV_Project_34/blob/main/NextSteps.png?raw=true)
+![Octocat](https://github.com/sreeranjj/Pedestrian-Identificatio-CNNs/blob/main/NextSteps.png?raw=true)
 
 ## Team member contribution
 To ensure the successful completion of the planned tasks, team member contributions will be as follows:
